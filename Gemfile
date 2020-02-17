@@ -34,9 +34,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # bootstrapのインストール mini_racerはJavaScriptのランタイムとして必要
+# rails5.1以上ではbootstrap導入にjqueryが必要
 gem 'bootstrap', '~> 4.0.0'
 gem 'mini_racer'
-
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
