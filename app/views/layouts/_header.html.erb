@@ -1,7 +1,7 @@
 <!-- bootstrapのナビゲーションバーをフッターに使用 -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <!-- タイトルをクリックしたらルート「/」ページへ移動 -->
-  <a class="navbar-brand" href="/"><h2>Liber's Blog</h2></a>
+  <a class="navbar-brand ml-1" href="/"><h2>Liber's Blog</h2></a>
 
   <!-- レスポンシブデザイン ページが小さくなったら三本線のアイコンを表示 -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
 
   <!-- ヘッダーのアイテムを定義 -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav ml-auto">
       <!-- application_helper.rbで定義しているheader_link_item関数を使用 -->
       <%= header_link_item('About', about_path) %>
       <%= header_link_item('Home', root_path) %>

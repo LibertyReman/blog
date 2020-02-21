@@ -1,8 +1,8 @@
 module ApplicationHelper
   #_header.html.erbで使用するメソッドを定義 引数にリンク名とパスを指定
   def header_link_item(name, path)
-    #bootstrapのデザインに合わせるために必要なクラス
-    class_name = 'nav-item'
+    #bootstrapで必要するクラスを代入
+    class_name = 'nav-item mr-1 h5'
     #current_pageで表示するパスと引数のパスが同じかを判断している
     #同じだった場合クラスの指定にactivwを追加する
     class_name << ' active' if current_page?(path)
