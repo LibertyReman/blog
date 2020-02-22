@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
 
   def index
-    @item_num = 1..12
+    @latest_item_num = 1..12
+    @popular_item_num = 1..4
   end
 
   def about
