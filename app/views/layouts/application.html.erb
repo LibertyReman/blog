@@ -14,7 +14,10 @@
     <!--パーシャル機能 app/views/layouts/_header.html.erbの内容が展開される -->
     <%= render 'layouts/header' %>
     <div class="container-fluid px-4">
+      <!--home.html.erbなどViewの内容がHTMLに変換され、<%= yield %>の位置に挿入される-->
       <%= yield %>
     </div>
+    <!--パーシャル機能 app/views/layouts/_footer.html.erbの内容が展開される -->
+    <%= render 'layouts/footer' %>
   </body>
 </html>
