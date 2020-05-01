@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles
   #ルート「/」へのGETリクエストをhome_controller.rbコントローラのindexアクションにルーティング
   root 'home#index'
 
