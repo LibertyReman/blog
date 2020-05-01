@@ -21,5 +21,12 @@
     <%= form.text_area :content, id: :article_content, rows: 10, class: 'form-control'%>
   </div>
 
-  <%= form.submit '作成', class: 'btn btn-secondary mb-3'%>
+  <% if request.path_info == new_article_path %>
+    <%= form.submit '作成', class: 'btn btn-secondary mb-3'%>
+  <% else %>
+    <%= form.submit '更新', class: 'btn btn-secondary mb-3'%>
+  <% end %>
+
+
+
 <% end %>
