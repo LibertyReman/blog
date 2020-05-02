@@ -5,11 +5,11 @@
 <h1 class="text-center border-bottom border-dark col-md-8 mx-auto my-4">LATEST ARTICLES</h1>
 
 <!-- 記事を表示 -->
-<div class="album py-5 bg-light mx-3">
+<div class="album py-4 bg-light mx-3">
   <div class="container-fluid">
     <div class="row">
       <% @latest_articles.each do |latest_article| %>
-        <%= link_to latest_article do %>
+        <%= link_to latest_article, style: 'text-decoration: none;' do %>
           <!-- lgより大きい場合はグリッド3、lgより小さくmdより大きい場合はグリッド6, それ以下はグリッド12-->
           <div class="col-lg-3 col-6 px-2">
             <div class="card mb-4 shadow-sm">
@@ -35,7 +35,7 @@
 <h1 class="text-center border-bottom border-dark col-md-8 mx-auto my-4">POPULAR ARTICLES</h1>
 
 <!-- 記事を表示 -->
-<div class="album py-5 bg-light mx-3">
+<div class="album py-4 bg-light mx-3">
   <div class="container-fluid">
     <div class="row">
       <% @popular_item_num.each do |i| %>
