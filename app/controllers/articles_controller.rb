@@ -5,6 +5,9 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    @latest_articles = Article.order(updated_at: :desc)
+    @popular_item_num = 1..4
+
   end
 
   # GET /articles/1
