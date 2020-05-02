@@ -1,3 +1,16 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.relative{
+    position: relative;
+    i{
+        position: absolute;
+        top: 27%;
+        left: 40%;
+        color: black;
+        font-size: 70px;
+    }
+}
+

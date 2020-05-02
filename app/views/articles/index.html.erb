@@ -12,8 +12,9 @@
         <%= link_to latest_article, style: 'text-decoration: none;' do %>
           <!-- lgより大きい場合はグリッド3、lgより小さくmdより大きい場合はグリッド6, それ以下はグリッド12-->
           <div class="col-lg-3 col-6 px-2">
-            <div class="card mb-4 shadow-sm">
-              <img class="img-fluid rounded" src="https://picsum.photos/400/280" alt="test img">
+            <div class="card mb-4 shadow-smr relative">
+              <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded' %>
+              <i class="fa fa-camera"></i>
               <div class="card-body pb-2">
                 <p class="card-text text-dark"><%= latest_article.title %></p>
                 <!-- d-flex:子要素をフレックスアイテム化、align-items-center:縦方向真ん中にアイテム配置 -->
