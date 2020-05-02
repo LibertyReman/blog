@@ -1,14 +1,10 @@
-<p id="notice"><%= notice %></p>
+<div class="mx-auto col-10 mt-3 bg-light border">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+  <p class="my-1 text-muted"><%= @article.updated_at.strftime("%Y.%m.%d") %></p>
+  <h4 class="font-weight-bold"><%= @article.title %></h4>
+  <p><%= @article.content %></p>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Back', articles_path %>
+</div>
