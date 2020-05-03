@@ -1,7 +1,15 @@
 <!-- bootstrapのナビゲーションバーをフッターに使用 -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark py-1 fixed-top ">
   <!-- タイトルをクリックしたらルート「/」ページへ移動 -->
-  <a class="navbar-brand ml-2" href="/"><h2 class="my-0">Liber's Blog</h2></a>
+  <% if user_signed_in? %>
+    <a class="navbar-brand ml-2" href="/"><h2 class="my-0"><%= current_user.name %> blog top page</h2></a>
+  <% else %>
+    <a class="navbar-brand ml-2" href="/"><h2 class="my-0">Liber's Blog</h2></a>
+  <% end %>
+
+
+
+
 
   <!-- レスポンシブデザイン ページが小さくなったら三本線のアイコンを表示 -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
