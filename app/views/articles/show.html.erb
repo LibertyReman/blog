@@ -1,11 +1,20 @@
 <h4 id="notice" class="bg-primary px-3"><%= notice %></h4>
-<div class="mx-auto col-10 mt-3 bg-light border">
+<div class="mx-auto col-10 mt-3 bg-light border pb-3">
   <p class="my-1 text-muted"><%= @article.updated_at.strftime("%Y.%m.%d") %></p>
-  <h4 class="font-weight-bold"><%= @article.title %></h4>
-  <p><%= @article.content %></p>
+  <h3 class="font-weight-bold mb-3"><%= @article.title %></h3>
+  <%= sanitize(@article.content) %>
 </div>
+
+
 <div class="mx-auto col-10 py-2">
-  <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
-  <%= link_to 'Back', articles_path, class: 'btn btn-primary mx-2' %>
-  <%= link_to 'Delete', article_path, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }%>
+  <% if user_signed_in? %>
+    <%= link_to '編集', edit_article_path(@article), class: 'btn btn-primary' %>
+    <%= link_to 'ホーム', articles_path, class: 'btn btn-primary mx-2' %>
+    <%= link_to '削除', article_path, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }%>
+  <% else %>
+    <%= link_to 'ホーム', articles_path, class: 'btn btn-primary mx-2' %>
+  <% end %>
 </div>
+
+
+
