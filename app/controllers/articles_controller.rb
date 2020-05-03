@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  #ログインしていなかったら、記事作成・編集・削除できないようにする
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
