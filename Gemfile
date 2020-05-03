@@ -40,6 +40,9 @@ gem 'mini_racer'
 gem 'jquery-rails'
 
 gem 'mysql2'
+gem 'devise'
+
+
 
 
 group :development, :test do
