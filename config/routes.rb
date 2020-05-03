@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :articles
   #ルート「/」へのGETリクエストをhome_controller.rbコントローラのindexアクションにルーティング
   root 'articles#index'
