@@ -11,8 +11,12 @@
             <!-- lgより大きい場合はグリッド3、lgより小さくmdより大きい場合はグリッド6, それ以下はグリッド12-->
             <div class="col-lg-3 col-6 px-2">
               <div class="card mb-4 shadow-smr relative">
-                <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded' %>
-                <i class="fa fa-camera"></i>
+                <% if latest_article.image_id.present? %>
+                  <%= image_tag attachment_url(latest_article, :image), class: 'img-fluid rounded' %>
+                <% else %>
+                  <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded' %>
+                  <i class="fa fa-camera"></i>
+                <% end %>
                 <div class="card-body pb-2">
                   <h5 class="card-text text-dark font-weight-bold"><%= latest_article.title %></h5>
                   <!-- d-flex:子要素をフレックスアイテム化、align-items-center:縦方向真ん中にアイテム配置 -->
