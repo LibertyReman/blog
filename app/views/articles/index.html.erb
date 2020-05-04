@@ -2,29 +2,32 @@
   <!-- bootstrapの設定：テキスト位置センター、黒色の下線、グリッド2 mdレスポンシブ、上下マージン4-->
   <h1 class="text-center border-bottom border-dark col-md-8 mx-auto my-4">LATEST ARTICLES</h1>
 
-
-  <div class="row row-cols-1 row-cols-md-3">
-    <% @latest_articles.each do |latest_article| %>
-      <div class="col mb-4 relative">
-        <div class="card h-100">
-          <% if latest_article.image_id.present? %>
-            <%= image_tag attachment_url(latest_article, :image), class: 'img-fluid rounded' %>
-          <% else %>
-            <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded' %>
-            <i class="fa fa-camera"></i>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><%= latest_article.title %></h5>
-          </div>
-          <div class="card-footer">
-            <div class="d-flex align-items-center">
-              <small class="text-muted mr-auto"><%= latest_article.updated_at.strftime("%Y.%m.%d") %></small>
-              <a href="#" class="badge badge-info ml-auto py-1 px-2">Diary</a>
+  <div class="album py-4 bg-light mx-3">
+    <div class="container-fluid">
+      <div class="row">
+        <% @latest_articles.each do |latest_article| %>
+          <div class="col-lg-3 col-6 px-2 mb-4 relative">
+            <div class="card mb-4 h-100">
+              <% if latest_article.image_id.present? %>
+                <%= image_tag attachment_url(latest_article, :image), class: 'img-fluid rounded' %>
+              <% else %>
+                <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded' %>
+                <i class="fa fa-camera"></i>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= latest_article.title %></h5>
+              </div>
+              <div class="card-footer">
+                <div class="d-flex align-items-center">
+                  <small class="text-muted mr-auto"><%= latest_article.updated_at.strftime("%Y.%m.%d") %></small>
+                  <a href="#" class="badge badge-info ml-auto py-1 px-2">Diary</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 
 
