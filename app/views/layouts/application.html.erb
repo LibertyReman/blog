@@ -15,11 +15,14 @@
     <!--パーシャル機能 app/views/layouts/_header.html.erbの内容が展開される -->
     <%= render 'layouts/header' %>
     <div class="container-fluid px-0">
-      <!--
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      -->
 
+    <!--パーシャル機能 app/views/layouts/_header.html.erbの内容が展開される -->
+    <% if alert %>
+      <h4 id="alert" class="bg-danger px-3"><%= alert %></h4>
+    <% end %>
+    <% if notice %>
+      <h4 id="notice" class="bg-primary px-3"><%= notice %></h4>
+    <% end %>
       <!--home.html.erbなどViewの内容がHTMLに変換され、yieldの位置に挿入される-->
       <%= yield %>
     </div>
