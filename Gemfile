@@ -42,9 +42,9 @@ gem 'jquery-rails'
 gem 'mysql2'
 gem 'devise'
 
-+#画像のアップロード用
-+gem "refile", github: 'refile/refile', require: "refile/rails"
-+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+#画像のアップロード用
+gem "refile", github: 'refile/refile', require: "refile/rails"
+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 
 
 group :development, :test do
