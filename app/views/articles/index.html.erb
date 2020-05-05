@@ -42,27 +42,43 @@
   <div class="album py-4 bg-light mx-3">
     <div class="container-fluid">
       <div class="row">
-        <% @popular_item_num.each do |i| %>
-          <!-- lgより大きい場合はグリッド3、lgより小さくmdより大きい場合はグリッド6, それ以下はグリッド12-->
-          <div class="col-lg-3 col-6 px-2">
-            <div class="card mb-4 shadow-sm">
-              <img class="img-fluid rounded" src="https://picsum.photos/400/280" alt="test img">
-              <div class="card-body pb-2">
-                <p class="card-text">This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit longer.</p>
-                <!-- d-flex:子要素をフレックスアイテム化、align-items-center:縦方向真ん中にアイテム配置 -->
-                <div class="d-flex align-items-center">
-                  <!-- text-muted:テキストの色設定、mr-auto:要素の右にスペース最大作成-->
-                  <small class="text-muted mr-auto">2013/09/04 12:17</small>
-                  <a href="#" class="badge badge-info py-1 px-2">Diary</a>
+        <% @popular_articles.each do |popular_article| %>
+          <div class="col-lg-3 col-6 px-2 mb-4 relative">
+            <%= link_to popular_article, class:'text-dark', style:'text-decoration: none;' do %>
+              <div class="card mb-4 h-100">
+                <% if popular_article.image_id.present? %>
+                  <!-- 画像サイズを揃える -->
+                  <%= image_tag attachment_url(popular_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 400px; height: 250px' %>
+                <% else %>
+                  <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 400px; height: 250px' %>
+                  <i class="fa fa-camera"></i>
+                <% end %>
+                <!-- heightでカードの高さを指定 -->
+                <div class="card-body" style="height: 50px;">
+                  <!-- タイトルの行数は２行以上表示しない-->
+                  <h5 class="card-title font-weight-bold" style="overflow: hidden; height: 2.5em;"><%= popular_article.title %></h5>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                  <div class="d-flex align-items-center">
+                    <small class="text-muted mr-auto"><%= popular_article.updated_at.strftime("%Y.%m.%d") %></small>
+                    <span class="badge badge-info ml-auto py-1 px-2">Diary</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
 </div>
 
 

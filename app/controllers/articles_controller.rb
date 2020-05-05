@@ -8,8 +8,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @latest_articles = Article.order(updated_at: :desc)
-    @popular_item_num = 1..4
-
+    @popular_articles = Article.order(updated_at: :desc)
   end
 
   # GET /articles/1
