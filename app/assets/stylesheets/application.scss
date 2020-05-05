@@ -25,6 +25,12 @@ body{
 }
 
 
+/* footerを最下部で固定するための設定 */
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
 /* footerの設定 */
 footer {
@@ -34,6 +40,7 @@ footer {
     bottom: 0;
     font-weight: lighter;
     color: white;
+    margin-top: auto
 }
 .footerHeader{
     width:100%;
@@ -66,7 +73,7 @@ footer iframe {
     display: inline;
     padding:5px;
     float:left;
-} 
+}
 .sm li a img {
     width:32px;
 }
