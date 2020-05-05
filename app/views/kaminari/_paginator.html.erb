@@ -1,6 +1,7 @@
 <%= paginator.render do %>
   <nav>
-    <ul class="pagination">
+    <!-- ページネーションの表示位置を真ん中に設定 -->
+    <ul class="pagination justify-content-center mt-2 mb-0" id="pagenation">
       <%= first_page_tag unless current_page.first? %>
       <%= prev_page_tag unless current_page.first? %>
       <% each_page do |page| %>
