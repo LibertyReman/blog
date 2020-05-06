@@ -6,8 +6,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
-    @latest_articles = Article.page(params[:page]).order(updated_at: :desc)
+    @latest_articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all
+    @latest_articles = @latest_articles.page(params[:page])
     @popular_articles = Article.order(updated_at: :desc).take(4)
   end
 
