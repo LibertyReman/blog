@@ -8,6 +8,7 @@ class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
   validates :image, presence: true
+  validates :tag_ids, presence: true
 
   attachment :image
 end
