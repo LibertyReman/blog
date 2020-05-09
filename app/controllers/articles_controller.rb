@@ -6,8 +6,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
-    @latest_articles = Article.page(params[:page]).order(updated_at: :desc)
+    @latest_articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all.order(updated_at: :desc)
+    @latest_articles = @latest_articles.page(params[:page]).order(updated_at: :desc)
     @popular_articles = Article.order(updated_at: :desc).take(4)
   end
 
@@ -73,6 +73,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content, :image)
+      params.require(:article).permit(:title, :content, :image, :tag_ids)
     end
 end

@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# tags DBにカテゴリーデータを作成
+Tag.create([
+  { name: 'Technology' },
+  { name: 'Business' },
+  { name: 'Lifehack' },
+  { name: 'Diary' }
+])
+
+
+
+

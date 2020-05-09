@@ -15,8 +15,8 @@
         <br>
         <div class="d-flex justify-content-start">
           <i class="mx-1 fas fa-envelope fa-fw fa-3x"></i>
-          <i class="mx-1 fab fa-github fa-fw fa-3x"></i>
-          <i class="mx-1 fab fa-twitter fa-fw fa-3x"></i>
+          <a href="https://github.com/LibertyReman" target=”_blank”><i class="mx-1 fab fa-github fa-fw fa-3x"></i></a>
+          <a href="https://twitter.com/LibertyReman" target=”_blank”><i class="mx-1 fab fa-twitter fa-fw fa-3x"></i></a>
         </div>
       </div>
 
@@ -28,14 +28,14 @@
         <div class="form-group text-left">
           <label for="name">名前</label>
           <!-- form-control-lgでサイズ変更 -->
-          <input class="form-control form-control-sm" type="text" name="myname" id="myname">
+          <input class="form-control form-control-sm" type="text" name="myname" id="name_data">
         </div>
         <div class="form-group text-left">
           <label for="message">メッセージ</label>
-          <textarea id="message" name="message" rows="4" cols="80" class="form-control"></textarea>
+          <textarea id="msg_data" name="message" rows="4" cols="80" class="form-control"></textarea>
         </div>
         <div class="text-right">
-          <button type="submit" class="btn btn-secondary py-1">送信</button>
+          <button type="submit" id='mail_btn' class="btn btn-secondary py-1">送信</button>
         </div>
       </div>
 
