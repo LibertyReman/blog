@@ -28,16 +28,34 @@
         <div class="form-group text-left">
           <label for="name">名前</label>
           <!-- form-control-lgでサイズ変更 -->
-          <input class="form-control form-control-sm" type="text" name="myname" id="myname">
+          <input class="form-control form-control-sm" type="text" name="myname" id="name_data">
         </div>
         <div class="form-group text-left">
           <label for="message">メッセージ</label>
-          <textarea id="message" name="message" rows="4" cols="80" class="form-control"></textarea>
+          <textarea id="msg_data" name="message" rows="4" cols="80" class="form-control"></textarea>
         </div>
         <div class="text-right">
-          <button type="submit" class="btn btn-secondary py-1">送信</button>
+          <button type="submit" id='mail_btn' class="btn btn-secondary py-1">送信</button>
         </div>
       </div>
+
+      <script>
+        window.onload = function() {
+          var address, subject, body, hiddenData;
+          var sendmail = document.getElementById('mail_btn');
+          sendmail.onclick = function() {
+            nameData = document.getElementById('name_data').value;
+            msgData = document.getElementById('msg_data').value;
+            address1 = 'libertyreman';
+            address2 = '@gmail.com';
+            address = address1+address2;
+            subject = 'お問い合わせ';
+            body = '【名前】' + '%0D%0A' + nameData + '%0D%0A' + '【メッセージ】' + '%0D%0A' + msgData; 
+            location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
+          };
+        };
+      </script>
+
 
       <!-- ボックスの全てのテキスト要素をセンターへ -->
       <div class="col-md-4 mt-1 mb-3 px-3 text-center">
