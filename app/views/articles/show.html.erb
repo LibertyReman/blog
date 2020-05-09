@@ -1,5 +1,10 @@
 <div class="mx-auto col-10 mt-3 bg-light border pb-3">
-  <p class="my-1 text-muted"><%= @article.updated_at.strftime("%Y.%m.%d") %></p>
+
+
+  <div class="d-flex align-items-center mb-1">
+    <p class="my-1 text-muted"><%= @article.updated_at.strftime("%Y.%m.%d") %></p>
+  　<%= render partial: "badge", locals: { badge: @article } %>
+  </div>
   <h3 class="font-weight-bold mb-3"><%= @article.title %></h3>
 
   <% if @article.image_id.present? %>

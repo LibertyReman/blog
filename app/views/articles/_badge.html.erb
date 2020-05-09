@@ -1,11 +1,11 @@
 <% badge.tags.each do |tag| %>
   <% if tag.id == 1 %>
-    <span class="badge badge-info ml-auto py-1 px-2"><%= tag.name %></span>
+    <span class="badge badge-info py-1 px-2"><%= tag.name %></span>
   <% elsif tag.id == 2 %>
-    <span class="badge badge-success ml-auto py-1 px-2"><%= tag.name %></span>
+    <span class="badge badge-success py-1 px-2"><%= tag.name %></span>
   <% elsif tag.id == 3 %>
-    <span class="badge badge-danger ml-auto py-1 px-2"><%= tag.name %></span>
+    <span class="badge badge-danger py-1 px-2"><%= tag.name %></span>
   <% elsif tag.id == 4 %>
-    <span class="badge badge-secondary ml-auto py-1 px-2"><%= tag.name %></span>
+    <span class="badge badge-secondary py-1 px-2"><%= tag.name %></span>
   <% end %>
 <% end %>
