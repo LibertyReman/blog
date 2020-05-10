@@ -1,6 +1,9 @@
 <%= form_with(model: article, local: true) do |form| %>
 
   <div class="form-group pt-3">
+  <% if article.image_id.present? %>
+    <%= image_tag attachment_url(article, :image), class: 'mx-left d-block img-fluid rounded', style: 'height: 360px;'%>
+  <% end %>
     <%= form.attachment_field :image %>
   </div>
 
@@ -12,7 +15,7 @@
      するプロパティを指定している　第2引数でタグオブジェクトを渡しているので、個々のタグオブジェクトの
      idの値がラジオボックスの値になる　第4引数は各ラジオボックスのラベル名としてタグオブジェクトの
      ネームプロパティの値をラベル名とする指定している -->
-    <%= form.collection_radio_buttons(:tag_ids, Tag.all, :id, :name) do |tag| %>
+    <%= form.collection_radio_buttons(:tag_ids, Tag.all, :id, :name, { checked: article.tags.collect(&:id) }) do |tag| %>
     <div class="form-check-inline">
       <%= tag.label {tag.radio_button + " " + tag.text} %>
     </div>
