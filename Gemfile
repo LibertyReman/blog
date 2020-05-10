@@ -49,6 +49,11 @@ gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 #ページネーション機能
 gem 'kaminari'
 
+#マークダウンエディタ
+gem 'redcarpet'
+#エディタマークアップ用
+gem 'coderay'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
