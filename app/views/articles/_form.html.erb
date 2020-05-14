@@ -2,9 +2,9 @@
 
   <div class='py-3 relative cover-img' style='width:400px'>
     <% if article.image_id.present? %>
-      <%= image_tag attachment_url(article, :image), class: 'd-block img-fluid rounded border' %>
+      <%= image_tag attachment_url(article, :image), class: 'd-block img-fluid rounded border', id: 'display-img' %>
     <% else %>
-      <%= image_tag 'bg-gray.jpg', class: 'd-block img-fluid rounded', style:'width: 400px; height: 250px' %>
+      <%= image_tag 'bg-gray.jpg', class: 'd-block img-fluid rounded', id: 'display-img', style:'width: 400px; height: 250px' %>
       <i class="fa fa-camera"></i>
     <% end %>
     <%= form.attachment_field :image, class: 'd-none' %>
