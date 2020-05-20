@@ -1,6 +1,4 @@
 <div class="mx-auto col-10 mt-3 bg-light border pb-3">
-
-
   <div class="d-flex align-items-center mb-1">
     <p class="my-1 text-muted"><%= @article.updated_at.strftime("%Y.%m.%d") %></p>
   　<%= render partial: "badge", locals: { badge: @article } %>
@@ -12,7 +10,6 @@
   <% end %>
   <%= sanitize(@article.content) %>
 </div>
-
 
 <div class="mx-auto col-10 py-2">
   <% if user_signed_in? %>
