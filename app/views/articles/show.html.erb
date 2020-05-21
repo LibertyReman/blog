@@ -8,7 +8,7 @@
   <% if @article.image_id.present? %>
     <%= image_tag attachment_url(@article, :image), class: 'd-block img-fluid rounded', style: 'height: 360px;'%>
   <% end %>
-  <%= sanitize(@article.content) %>
+  <%= md_to_html(@article.content) %>
 </div>
 
 <div class="mx-auto col-10 py-2">
