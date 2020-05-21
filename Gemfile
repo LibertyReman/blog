@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 # bootstrapのインストール mini_racerはJavaScriptのランタイムとして必要
 # rails5.1以上ではbootstrap導入にjqueryが必要
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'mini_racer'
 gem 'jquery-rails'
 
