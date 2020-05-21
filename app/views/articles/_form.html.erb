@@ -1,7 +1,17 @@
-<%= form_with(model: article, local: true) do |form| %>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+</head>
 
-  <div class="form-group pt-3">
-    <%= form.attachment_field :image %>
+<%= form_with(model: article, local: true) do |form| %>
+  <div class='py-3 relative cover-img' style='width:400px'>
+    <% if article.image_id.present? %>
+      <%= image_tag attachment_url(article, :image), class: 'd-block img-fluid rounded border', id: 'display-img' %>
+    <% else %>
+      <%= image_tag 'bg-gray.jpg', class: 'd-block img-fluid rounded', id: 'display-img', style:'width: 400px; height: 250px' %>
+      <i class="fa fa-camera"></i>
+    <% end %>
+    <%= form.attachment_field :image, class: 'd-none' %>
   </div>
 
   <div class="form-group">
@@ -12,7 +22,7 @@
      するプロパティを指定している　第2引数でタグオブジェクトを渡しているので、個々のタグオブジェクトの
      idの値がラジオボックスの値になる　第4引数は各ラジオボックスのラベル名としてタグオブジェクトの
      ネームプロパティの値をラベル名とする指定している -->
-    <%= form.collection_radio_buttons(:tag_ids, Tag.all, :id, :name) do |tag| %>
+    <%= form.collection_radio_buttons(:tag_ids, Tag.all, :id, :name, { checked: article.tags.collect(&:id) }) do |tag| %>
     <div class="form-check-inline">
       <%= tag.label {tag.radio_button + " " + tag.text} %>
     </div>
@@ -24,9 +34,12 @@
     <%= form.text_field :title, id: :article_title, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mb-0">
     <%= form.label :content, 'コンテンツ' %>
-    <%= form.text_area :content, id: :article_content, rows: 10, class: 'form-control'%>
+    <textarea id="editor" name="article[content]" rows="10"><%= article.content if article.content %></textarea>
+    <script>
+      var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
+    </script>
   </div>
 
   <% if request.path_info == new_article_path %>
