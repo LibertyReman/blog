@@ -3,7 +3,7 @@
   <head>
     <!-- Webページの検索結果のタイトルになる？ -->
     <!-- ページのタブの名前を変更 -->
-    <title>Liber's Blog</title>
+    <title><%= content_for?(:html_title) ? yield(:html_title) + ' | ' + "Liber's Blog" : "Liber's Blog" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>

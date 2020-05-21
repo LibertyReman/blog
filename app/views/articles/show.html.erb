@@ -1,20 +1,23 @@
+<% content_for(:html_title) { @article.title } %>
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
-<div class="mx-auto col-10 mt-3 bg-light border pb-3">
-  <div class="d-flex align-items-center mb-1">
-    <p class="my-1 text-muted"><%= @article.updated_at.strftime("%Y.%m.%d") %></p>
-  　<%= render partial: "badge", locals: { badge: @article } %>
-  </div>
-  <h3 class="font-weight-bold mb-3"><%= @article.title %></h3>
+<div class="mx-auto col-10 mt-3 border pb-3">
+  <div class="col-12 mt-2 mx-auto">
+    <div class="d-flex align-items-center mb-1">
+      <p class="my-1 text-muted"><%= @article.updated_at.strftime("%Y.%m.%d") %></p>
+      　<%= render partial: "badge", locals: { badge: @article } %>
+    </div>
+    <h3 class="font-weight-bold mb-3"><%= @article.title %></h3>
 
-  <% if @article.image_id.present? %>
-    <%= image_tag attachment_url(@article, :image), class: 'd-block img-fluid rounded', style: 'height: 360px;'%>
-  <% end %>
-  <%= md_to_html(@article.content) %>
+    <% if @article.image_id.present? %>
+      <%= image_tag attachment_url(@article, :image), class: 'd-block img-fluid rounded border mb-2', style: 'height: 360px;'%>
+    <% end %>
+    <%= md_to_html(@article.content) %>
+  </div>
 </div>
 
 <div class="mx-auto col-10 py-2">
