@@ -1,50 +1,33 @@
-<head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-</head>
+<h1>アイコン変更画面</h1>
 
-<%= form_with(model: article, local: true) do |form| %>
-  <div class='py-3 relative cover-img' style='width:400px'>
-    <% if article.image_id.present? %>
-      <%= image_tag attachment_url(article, :image), class: 'd-block img-fluid rounded border', id: 'display-img' %>
-    <% else %>
-      <%= image_tag 'bg-gray.jpg', class: 'd-block img-fluid rounded', id: 'display-img', style:'width: 400px; height: 250px' %>
-      <i class="fa fa-camera"></i>
-    <% end %>
-    <%= form.attachment_field :image, class: 'd-none' %>
-  </div>
-
-  <div class="form-group">
-    <span>タグ</span><br>
-    <!-- 存在するタグの数だけ、ラジオボックスを生成する
-     多対多の設定によりarticleオブジェクトにtag_idsというプロパティが追加されている
-     第2引数はtagオブジェクトのリストを取得して渡している 第3引数はラジオボックスのバリューに設定
-     するプロパティを指定している　第2引数でタグオブジェクトを渡しているので、個々のタグオブジェクトの
-     idの値がラジオボックスの値になる　第4引数は各ラジオボックスのラベル名としてタグオブジェクトの
-     ネームプロパティの値をラベル名とする指定している -->
-    <%= form.collection_radio_buttons(:tag_ids, Tag.all, :id, :name, { checked: article.tags.collect(&:id) }) do |tag| %>
-    <div class="form-check-inline">
-      <%= tag.label {tag.radio_button + " " + tag.text} %>
-    </div>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :title, 'タイトル'  %>
-    <%= form.text_field :title, id: :article_title, class: 'form-control' %>
-  </div>
-
-  <div class="form-group mb-0">
-    <%= form.label :content, 'コンテンツ' %>
-    <textarea id="editor" name="article[content]" rows="10"><%= article.content if article.content %></textarea>
-    <script>
-      var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
-    </script>
-  </div>
-
-  <% if request.path_info == new_article_path %>
-    <%= form.submit '作成', class: 'btn btn-secondary mb-3'%>
-  <% else %>
-    <%= form.submit '更新', class: 'btn btn-secondary mb-3'%>
+<form>
+  <%= hidden_field_tag "article_id", @article.id %>
+  <%= file_field_tag 'article[avatar]' %>
+  <%= button_tag :submit, :id => "submitBtn" %>
+  <% if @article.persisted? && @article.avatar? %>
+    <%= link_to "削除", delete_avatar_path, method: :delete %>
   <% end %>
-<% end %>
+  <%= link_to "キャンセル", articles_path %>
+  <% if @article.persisted? && @article.avatar? %>
+    <div id="crop_area_box">
+      <%= image_tag @article.avatar, :id => "crop_image", :html => [:width => "600px"] %>
+    </div>
+  <% else %>
+    <div id="crop_area_box"><img id="crop_image" /></div>
+  <% end %>
+  <div id="crop_preview"></div>
+</form>
+
+<!-- Cropper.jsは、当該ページ個別に読み込む -->
+<%= stylesheet_link_tag    'cropper.min' %>
+<%= javascript_include_tag 'cropper.min' %>
+<%= javascript_include_tag 'edit_avatar' %>
+
+<style>
+  #crop_area_box {
+    display: block;
+    width: 600px;
+    height: 600px;
+    overflow: hidden;
+  }
+</style>
