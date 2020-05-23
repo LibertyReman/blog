@@ -1,28 +1,5 @@
 <h1>アイコン変更画面</h1>
 
-<form>
-  <%= hidden_field_tag "article_id", @article.id %>
-  <%= file_field_tag 'article[avatar]' %>
-  <%= button_tag :submit, :id => "submitBtn" %>
-  <% if @article.persisted? && @article.avatar? %>
-    <%= link_to "削除", delete_avatar_path, method: :delete %>
-  <% end %>
-  <%= link_to "キャンセル", articles_path %>
-  <% if @article.persisted? && @article.avatar? %>
-    <div id="crop_area_box">
-      <%= image_tag @article.avatar, :id => "crop_image", :html => [:width => "600px"] %>
-    </div>
-  <% else %>
-    <div id="crop_area_box"><img id="crop_image" /></div>
-  <% end %>
-  <div id="crop_preview"></div>
-</form>
-
-<!-- Cropper.jsは、当該ページ個別に読み込む -->
-<%= stylesheet_link_tag    'cropper.min' %>
-<%= javascript_include_tag 'cropper.min' %>
-<%= javascript_include_tag 'edit_avatar' %>
-
 <style>
   #crop_area_box {
     display: block;
@@ -31,3 +8,40 @@
     overflow: hidden;
   }
 </style>
+
+<%= form_with(model: article, local: true) do |form| %>
+  <%= hidden_field_tag "article_id", @article.id %>
+
+  <%= form.attachment_field :image%>
+
+  <% if @article.persisted? %>
+    <%= link_to "削除", delete_avatar_path, method: :delete %>
+  <% end %>
+  <%= link_to "キャンセル", articles_path %>
+
+  <% if @article.persisted? %>
+    <div id="crop_area_box">
+      <%= image_tag attachment_url(article, :image), :id => "crop_image", :html => [:width => "600px"] %>
+    </div>
+  <% else %>
+    <div id="crop_area_box"><img id="crop_image" /></div>
+  <% end %>
+  <div id="crop_preview"></div>
+
+<!-- Cropper.jsは、当該ページ個別に読み込む -->
+<%= stylesheet_link_tag    'cropper.min' %>
+<%= javascript_include_tag 'cropper.min' %>
+<%= javascript_include_tag 'edit_avatar' %>
+
+  <% if request.path_info == new_article_path %>
+    <%= form.submit '作成', id: 'submitBtn', class: 'btn btn-secondary mb-3'%>
+  <% else %>
+    <%= form.submit '更新', class: 'btn btn-secondary mb-3'%>
+  <% end %>
+
+
+
+<% end %>
+
+
+

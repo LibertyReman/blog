@@ -16,7 +16,6 @@
     <% if @article.image_id.present? %>
       <%= image_tag attachment_url(@article, :image), class: 'd-block img-fluid rounded border mb-2', style: 'height: 360px;'%>
     <% end %>
-    <%= md_to_html(@article.content) %>
   </div>
 </div>
 
