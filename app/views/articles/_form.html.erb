@@ -4,24 +4,19 @@
 </head>
 
 <%= form_with(model: article, local: true) do |form| %>
-  <div class='py-3 relative cover-img' style='width:400px'>
+  <div class='py-3 relative cover-img' style='width:620px; height:380px;'>
     <% if article.image_id.present? %>
-      <%= image_tag attachment_url(article, :image), class: 'd-block img-fluid rounded border', id: 'display-img' %>
+      <%= image_tag attachment_url(article, :image), class: 'd-block img-fluid rounded border', id: 'display-img', style:'width:620px; height:350px; object-fit: cover;' %>
     <% else %>
-      <%= image_tag 'bg-gray.jpg', class: 'd-block img-fluid rounded', id: 'display-img', style:'width: 400px; height: 250px' %>
-      <i class="fa fa-camera"></i>
+      <%= image_tag 'bg-gray.jpg', class: 'd-block img-fluid rounded border', id: 'display-img', style:'width:620px; height:350px; object-fit: cover;' %>
     <% end %>
+    <i class="fa fa-camera"></i>
     <%= form.attachment_field :image, class: 'd-none' %>
   </div>
 
   <div class="form-group">
     <span>タグ</span><br>
-    <!-- 存在するタグの数だけ、ラジオボックスを生成する
-     多対多の設定によりarticleオブジェクトにtag_idsというプロパティが追加されている
-     第2引数はtagオブジェクトのリストを取得して渡している 第3引数はラジオボックスのバリューに設定
-     するプロパティを指定している　第2引数でタグオブジェクトを渡しているので、個々のタグオブジェクトの
-     idの値がラジオボックスの値になる　第4引数は各ラジオボックスのラベル名としてタグオブジェクトの
-     ネームプロパティの値をラベル名とする指定している -->
+    <!-- 存在するタグの数だけ、ラジオボックスを生成する -->
     <%= form.collection_radio_buttons(:tag_ids, Tag.all, :id, :name, { checked: article.tags.collect(&:id) }) do |tag| %>
     <div class="form-check-inline">
       <%= tag.label {tag.radio_button + " " + tag.text} %>
@@ -29,7 +24,7 @@
     <% end %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" style="width:620px;" >
     <%= form.label :title, 'タイトル'  %>
     <%= form.text_field :title, id: :article_title, class: 'form-control' %>
   </div>

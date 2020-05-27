@@ -2,13 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.cover-img{
+    cursor: pointer;
+}
 
 .relative{
     position: relative;
     i{
         position: absolute;
-        top: 35%;
-        left: 41%;
+        top: 39%;
+        left: 44%;
         color: black;
         font-size: 70px;
     }
