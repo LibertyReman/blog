@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- スマフォ表示する際に必要 -->
+   <meta name="viewport" content="width=device-width,initial-scale=0.8,minimum-scale=0.8">
     <!-- Webページの検索結果のタイトルになる？ -->
     <!-- ページのタブの名前を変更 -->
     <title><%= content_for?(:html_title) ? yield(:html_title) + ' | ' + "Liber's Blog" : "Liber's Blog" %></title>
