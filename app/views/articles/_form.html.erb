@@ -1,47 +1,36 @@
-<h1>アイコン変更画面</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="preview" style='overflow:hidden'>
+          <div id="beforeUpload">
+            <i class="mx-1 fab file-image fa-fw fa-3x"></i></a>
+          </div>
+          <img src="" id="croppedImage">
+      </div>
 
-<style>
-  #crop_area_box {
-    display: block;
-    width: 600px;
-    height: 600px;
-    overflow: hidden;
-  }
-</style>
+      <%= form_with model: @article, url: articles_path do |f| %>
+        <%= f.attachment_field :image, id: 'user_image'  %>
+        <%= f.hidden_field :x, id:"dataX"%>
+        <%= f.hidden_field :y, id:"dataY"%>
+        <%= f.hidden_field :width, id:"dataWidth"%>
+        <%= f.hidden_field :height, id:"dataHeight"%>
 
-<%= form_with(model: article, local: true) do |form| %>
-  <%= hidden_field_tag "article_id", @article.id %>
-
-  <%= form.attachment_field :image%>
-
-  <% if @article.persisted? %>
-    <%= link_to "削除", delete_avatar_path, method: :delete %>
-  <% end %>
-  <%= link_to "キャンセル", articles_path %>
-
-  <% if @article.persisted? %>
-    <div id="crop_area_box">
-      <%= image_tag attachment_url(article, :image), :id => "crop_image", :html => [:width => "600px"] %>
+        <%= f.submit "button", id:"btnUpload", class: 'btn btn-success'%>
+      <% end %>
+      <div class="modal fade" id="cropModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="img-container">
+                <img src="" id="imageModal" alt="picture">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="btn-save" data-dismiss="modal">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% else %>
-    <div id="crop_area_box"><img id="crop_image" /></div>
-  <% end %>
-  <div id="crop_preview"></div>
-
-<!-- Cropper.jsは、当該ページ個別に読み込む -->
-<%= stylesheet_link_tag    'cropper.min' %>
-<%= javascript_include_tag 'cropper.min' %>
-<%= javascript_include_tag 'edit_avatar' %>
-
-  <% if request.path_info == new_article_path %>
-    <%= form.submit '作成', id: 'submitBtn', class: 'btn btn-secondary mb-3'%>
-  <% else %>
-    <%= form.submit '更新', class: 'btn btn-secondary mb-3'%>
-  <% end %>
-
-
-
-<% end %>
-
-
-
+  </div>
+</div>

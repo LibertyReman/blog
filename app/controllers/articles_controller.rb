@@ -32,6 +32,11 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        session[:crop_x] = user_params[:x]
+        session[:crop_y] = user_params[:y]
+        session[:crop_width] = user_params[:width]
+        session[:crop_height] = user_params[:height]
+
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
@@ -73,6 +78,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content, :image, :tag_ids)
+      params.require(:article).permit(:title, :content, :image, :x, :y, :width, :height, :tag_ids)
     end
 end

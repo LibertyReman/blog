@@ -11,7 +11,7 @@
               <div class="card mb-4 h-100">
                 <% if latest_article.image_id.present? %>
                   <!-- 画像サイズを揃える -->
-                  <%= image_tag attachment_url(latest_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 400px; height: 230px' %>
+                  <%= image_tag attachment_url(latest_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 400px; height: 230px; object-fit: cover;' %>
                 <% else %>
                   <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 400px; height: 230px' %>
                   <i class="fa fa-camera"></i>
@@ -50,7 +50,7 @@
               <div class="card mb-4 h-100">
                 <% if popular_article.image_id.present? %>
                   <!-- 画像サイズを揃える -->
-                  <%= image_tag attachment_url(popular_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 400px; height: 230px' %>
+                  <%= image_tag attachment_url(popular_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 400px; height: 230px object-fit: cover;' %>
                 <% else %>
                   <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 400px; height: 230px' %>
                   <i class="fa fa-camera"></i>

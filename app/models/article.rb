@@ -5,6 +5,6 @@ class Article < ApplicationRecord
   #一つの記事が複数のtagsを持つ throughでarticle_tag_relationsと関連付け
   has_many :tags, through: :article_tag_relations
 
-
+  attr_accessor :x, :y, :width, :height
   attachment :image
 end
