@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path: '', path_names: { sign_in: 'edit/login', sign_out: 'logout'}
   resources :articles
   #ルート「/」へのGETリクエストをhome_controller.rbコントローラのindexアクションにルーティング
   root 'articles#index'

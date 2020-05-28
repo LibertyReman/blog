@@ -19,10 +19,10 @@
       <%= render 'layouts/header' %>
       <!-- エラー・アラートメッセージを表示 -->
       <% if alert %>
-        <h4 id="alert" class="bg-danger px-3"><%= alert %></h4>
+        <h4 id="alert" class="bg-danger px-3 mt-2"><%= alert %></h4>
       <% end %>
       <% if notice %>
-        <h4 id="notice" class="bg-primary px-3"><%= notice %></h4>
+        <h4 id="notice" class="bg-primary px-3 mt-2"><%= notice %></h4>
       <% end %>
       <!--home.html.erbなどViewの内容がHTMLに変換され、yieldの位置に挿入される-->
       <%= yield %>
