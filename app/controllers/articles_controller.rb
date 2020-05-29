@@ -12,6 +12,16 @@ class ArticlesController < ApplicationController
     @search_articles = Article.search(params[:search])
     @search_articles = @search_articles.page(params[:page]).order(updated_at: :desc)
     @search_word = params[:search]
+
+    # 記事検索結果が無い場合、アラートを出す
+    if @search_word.present?
+      if @search_articles.present?
+        # 記事があった場合はアラートを消す
+        flash[:alert] = ""
+      else
+        flash[:alert] = "Noting found: #{@search_word}"
+      end
+    end
   end
 
   # GET /articles/1
