@@ -17,3 +17,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+  setTimeout("$('.flash').fadeOut('slow')", 4000);
+});
+

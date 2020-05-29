@@ -18,12 +18,14 @@
       <!--パーシャル機能 app/views/layouts/_header.html.erbの内容が展開される -->
       <%= render 'layouts/header' %>
       <!-- エラー・アラートメッセージを表示 -->
-      <% if alert %>
-        <h4 id="alert" class="bg-danger px-3 mt-2"><%= alert %></h4>
-      <% end %>
-      <% if notice %>
-        <h4 id="notice" class="bg-primary px-3 mt-2"><%= notice %></h4>
-      <% end %>
+      <div class="flash">
+        <% if alert %>
+          <h4 id="alert" class="bg-danger px-3 mt-2"><%= alert %></h4>
+        <% end %>
+        <% if notice %>
+          <h4 id="notice" class="bg-primary px-3 mt-2"><%= notice %></h4>
+        <% end %>
+      </div>
       <!--home.html.erbなどViewの内容がHTMLに変換され、yieldの位置に挿入される-->
       <%= yield %>
       <!--パーシャル機能 app/views/layouts/_footer.html.erbの内容が展開される -->

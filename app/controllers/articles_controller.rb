@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
         # 記事があった場合はアラートを消す
         flash[:alert] = ""
       else
-        flash[:alert] = "Noting found: #{@search_word}"
+        flash.now[:alert] = "Noting found: #{@search_word}"
       end
     end
   end
