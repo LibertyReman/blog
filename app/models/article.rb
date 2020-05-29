@@ -17,7 +17,7 @@ class Article < ApplicationRecord
     if search
       Article.where(['content LIKE ?', "%#{search}%"])
     else
-      Article.all
+      Article.none
     end
   end
 end

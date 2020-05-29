@@ -1,5 +1,5 @@
 <% if @article.errors.any? %>
-  <div id="error_explanation" class="bg-danger">
+  <div id="error_explanation" class="bg-danger mt-2">
     <h4 class="mx-3 my-0"><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h4>
     <ul>
     <% @article.errors.full_messages.each do |message| %>

@@ -1,19 +1,58 @@
+<!-- 検索結果の表示 -->
+<% if @search_word.present? %>
+  <% if @search_articles.present? %>
+    <div class="mx-auto col-lg-11 col-12">
+      <h2 class="text-center border-bottom border-dark col-md-8 mx-auto my-4" style="font-style:italic;">Search results for: <%= @search_word %></h2>
+      <!-- 検索結果の表示-->
+      <div class="album pt-4 bg-light">
+        <div class="container-fluid">
+          <div class="row">
+            <% @search_articles.each do |search_article| %>
+              <div class="col-lg-3 col-6 px-2 mb-4 relative">
+                <%= link_to search_article, class:'text-dark', style:'text-decoration: none;', style:'text-decoration: none;', data: {"turbolinks" => false} do %>
+                  <div class="card mb-4 h-100">
+                    <% if search_article.image_id.present? %>
+                      <!-- 画像サイズを揃える -->
+                      <%= image_tag attachment_url(search_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 100%; height: 230px; object-fit: cover;' %>
+                    <% else %>
+                      <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 100%; height: 230px' %>
+                      <i class="fa fa-camera"></i>
+                    <% end %>
+                    <!-- heightでカードの高さを指定 -->
+                    <div class="card-body p-2" style="height: 20px;">
+                      <!-- タイトルの行数は２行以上表示しない-->
+                      <h5 class="card-title font-weight-bold" style="font-size:1.1rem; overflow: hidden; height: 2.2em;"><%= search_article.title %></h5>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                      <div class="d-flex align-items-center">
+                        <small class="text-muted mr-auto"><%= search_article.updated_at.strftime("%Y.%m.%d") %></small>
+                        　<%= render partial: "badge", locals: { badge: search_article }, class: "ml-auto"  %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <!-- kaminariによるページネーションを表示 -->
+        <%= paginate @search_articles %>
+      </div>
+    </div>
+  <% else %>
+    <div class="mx-auto col-lg-11 col-12">
+      <h2 class="text-center border-bottom border-dark col-md-8 mx-auto mt-4" style="font-style:italic;">Search results for: <%= @search_word %></h2>
+      <h3 class="text-left text-danger col-md-8 mx-auto mt-2">Noting found</h3>
+    </div>
+  <% end %>
+<% end %>
+
+
 <!-- PC表示のときはcol-11, スマフォのときはcol-12 -->
 <div class="mx-auto col-lg-11 col-12">
   <!-- bootstrapの設定：テキスト位置センター、黒色の下線、グリッド2 mdレスポンシブ、上下マージン4-->
   <h1 class="text-center border-bottom border-dark col-md-8 mx-auto my-4">LATEST ARTICLES</h1>
-
-  <!-- 検索結果の表示-->
-  <ul>
-    <% @search_articles.each do |post| %>
-      <li>
-        <%= link_to post.title, post %>
-        <%= post.created_at %>
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="album py-4 bg-light">
+  <div class="album pt-4 bg-light">
     <div class="container-fluid">
       <div class="row">
         <% @latest_articles.each do |latest_article| %>
@@ -52,7 +91,7 @@
   <h1 class="text-center border-bottom border-dark col-md-8 mx-auto my-4">POPULAR ARTICLES</h1>
 
   <!-- 記事を表示 -->
-  <div class="album py-4 bg-light">
+  <div class="album pt-4 bg-light">
     <div class="container-fluid">
       <div class="row">
         <% @popular_articles.each do |popular_article| %>
