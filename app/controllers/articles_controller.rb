@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
     @latest_articles = params[:tag_id].present? ? Tag.find(params[:tag_id]).articles : Article.all.order(updated_at: :desc)
     @latest_articles = @latest_articles.page(params[:page]).order(updated_at: :desc)
     @popular_articles = Article.order(updated_at: :desc).take(4)
+    @search_articles = Article.search(params[:search])
   end
 
   # GET /articles/1

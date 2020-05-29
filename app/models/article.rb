@@ -11,4 +11,13 @@ class Article < ApplicationRecord
   validates :tag_ids, presence: true
 
   attachment :image
+
+  # 記事検索処理
+  def self.search(search)
+    if search
+      Article.where(['content LIKE ?', "%#{search}%"])
+    else
+      Article.all
+    end
+  end
 end
