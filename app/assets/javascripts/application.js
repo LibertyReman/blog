@@ -19,6 +19,6 @@
 //= require_tree .
 
 $(function(){
-  setTimeout("$('.flash').fadeOut('slow')", 4000);
+  setTimeout("$('.flash').fadeOut('slow')", 2000);
 });
 

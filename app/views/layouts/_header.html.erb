@@ -27,11 +27,9 @@
     </ul>
 
     <!-- form-inlineで横並び表示 -->
-    <form class="form-inline">
       <%= form_with url: articles_path, method: :get, local: true do |f| %>
-        <%= f.text_field :search, class:'form-control form-control-md mr-sm-2', type:'search', placeholder:'Search', size:'15' %>
+        <%= f.text_field :search, class:'form-control form-control-md col-lg-12 col-6 mr-sm-2', type:'search', placeholder:'Search', size:'15' %>
       <% end %>
-    </form>
   </div>
 </nav>
 
