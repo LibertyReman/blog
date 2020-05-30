@@ -15,7 +15,7 @@ class Article < ApplicationRecord
   # 記事検索処理
   def self.search(search)
     if search
-      Article.where(['content LIKE ?', "%#{search}%"])
+      Article.where(['content LIKE ?', "%#{search}%"]).or(Article.where(['title LIKE ?', "%#{search}%"]))
     else
       Article.none
     end
