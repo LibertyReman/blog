@@ -8,14 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: blog_development
+  database: liber_development
 
 test:
   <<: *default
-  database: blog_test
+  database: liber_test
 
 production:
   <<: *default
-  database: blog_production
-  username: blog
+  database: liber_production
+  username: liber
   password: <%= ENV['DB_PASSWORD'] %>
