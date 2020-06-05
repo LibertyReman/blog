@@ -5,12 +5,14 @@
    <meta name="viewport" content="width=device-width,initial-scale=0.8,minimum-scale=0.8">
     <!-- Webページの検索結果のタイトルになる？ -->
     <!-- ページのタブの名前を変更 -->
-    <title><%= content_for?(:html_title) ? yield(:html_title) + ' | ' + "Liber's Blog" : "Liber's Blog" %></title>
+    <title><%= content_for?(:html_title) ? yield(:html_title) + ' - ' + "Liber's Blog" : "Liber's Blog" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <%= favicon_link_tag('favicon.ico') %>
+    <%= favicon_link_tag('apple-touch-icon.png',{:rel => 'apple-touch-icon',:sizes => '280x280',:type => 'image/png'}) %>
   </head>
 
   <body>
