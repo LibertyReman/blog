@@ -12,21 +12,29 @@
               <%= link_to search_article, class:'text-dark', style:'text-decoration: none;', style:'text-decoration: none;', data: {"turbolinks" => false} do %>
                 <div class="card mb-4 h-100">
                   <% if search_article.image_id.present? %>
-                    <!-- 画像サイズを揃える -->
-                    <%= image_tag attachment_url(search_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 100%; height: 230px; object-fit: cover;' %>
+                    <!-- アスペクト比75%で画像サイズを揃える -->
+                    <div class="img-wrapper">
+                      <div class="img-content">
+                        <%= image_tag attachment_url(search_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 100%; height: 100%; object-fit: cover;' %>
+                      </div>
+                    </div>
                   <% else %>
-                    <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 100%; height: 230px' %>
-                    <i class="fa fa-camera"></i>
+                    <div class="img-wrapper">
+                      <div class="img-content">
+                        <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 100%; height: 100%' %>
+                        <i class="fa fa-camera"></i>
+                      </div>
+                    </div>
                   <% end %>
                   <!-- heightでカードの高さを指定 -->
                   <div class="card-body p-2" style="height: 20px;">
                     <!-- タイトルの行数は２行以上表示しない-->
-                    <h5 class="card-title font-weight-bold" style="font-size:1.1rem; overflow: hidden; height: 2.2em;"><%= search_article.title %></h5>
+                    <h5 class="card-title font-weight-bold" style="font-size:1.1rem; overflow: hidden; height: 2.3em;"><%= search_article.title %></h5>
                   </div>
                   <div class="card-footer bg-transparent border-0">
                     <div class="d-flex align-items-center">
                       <small class="text-muted mr-auto"><%= search_article.updated_at.strftime("%Y.%m.%d") %></small>
-                      　<%= render partial: "badge", locals: { badge: search_article }, class: "ml-auto"  %>
+                      <%= render partial: "badge", locals: { badge: search_article }, class: "ml-auto" %>
                     </div>
                   </div>
                 </div>
@@ -53,21 +61,29 @@
               <%= link_to latest_article, class:'text-dark', style:'text-decoration: none;', style:'text-decoration: none;', data: {"turbolinks" => false} do %>
                 <div class="card mb-4 h-100">
                   <% if latest_article.image_id.present? %>
-                    <!-- 画像サイズを揃える -->
-                    <%= image_tag attachment_url(latest_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 100%; height: 230px; object-fit: cover;' %>
+                    <!-- アスペクト比75%で画像サイズを揃える -->
+                    <div class="img-wrapper">
+                      <div class="img-content">
+                        <%= image_tag attachment_url(latest_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 100%; height: 100%; object-fit: cover;' %>
+                      </div>
+                    </div>
                   <% else %>
-                    <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 100%; height: 230px' %>
-                    <i class="fa fa-camera"></i>
+                    <div class="img-wrapper">
+                      <div class="img-content">
+                        <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 100%; height: 100%' %>
+                        <i class="fa fa-camera"></i>
+                      </div>
+                    </div>
                   <% end %>
                   <!-- heightでカードの高さを指定 -->
                   <div class="card-body p-2" style="height: 20px;">
                     <!-- タイトルの行数は２行以上表示しない-->
-                    <h5 class="card-title font-weight-bold" style="font-size:1.1rem; overflow: hidden; height: 2.2em;"><%= latest_article.title %></h5>
+                    <h5 class="card-title font-weight-bold" style="font-size:1.1rem; overflow: hidden; height: 2.3em;"><%= latest_article.title %></h5>
                   </div>
                   <div class="card-footer bg-transparent border-0">
                     <div class="d-flex align-items-center">
                       <small class="text-muted mr-auto"><%= latest_article.updated_at.strftime("%Y.%m.%d") %></small>
-                      　<%= render partial: "badge", locals: { badge: latest_article }, class: "ml-auto"  %>
+                      <%= render partial: "badge", locals: { badge: latest_article }, class: "ml-auto"  %>
                     </div>
                   </div>
                 </div>
@@ -90,21 +106,29 @@
               <%= link_to popular_article, class:'text-dark', style:'text-decoration: none;', data: {"turbolinks" => false} do %>
                 <div class="card mb-4 h-100">
                   <% if popular_article.image_id.present? %>
-                    <!-- 画像サイズを揃える -->
-                    <%= image_tag attachment_url(popular_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 100%; height: 230px; object-fit: cover;' %>
+                    <!-- アスペクト比75%で画像サイズを揃える -->
+                    <div class="img-wrapper">
+                      <div class="img-content">
+                        <%= image_tag attachment_url(popular_article, :image), class: 'img-fluid rounded border-bottom', style:'width: 100%; height: 100%; object-fit: cover;' %>
+                      </div>
+                    </div>
                   <% else %>
-                    <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 100%; height: 230px' %>
-                    <i class="fa fa-camera"></i>
+                    <div class="img-wrapper">
+                      <div class="img-content">
+                        <%= image_tag 'bg-gray.jpg', class: 'img-fluid rounded', style:'width: 100%; height: 100%' %>
+                        <i class="fa fa-camera"></i> 
+                      </div>
+                    </div>
                   <% end %>
                   <!-- heightでカードの高さを指定 -->
                   <div class="card-body p-2" style="height: 20px;">
                     <!-- タイトルの行数は２行以上表示しない-->
-                    <h5 class="card-title font-weight-bold" style="font-size:1.1rem; overflow: hidden; height: 2.2em;"><%= popular_article.title %></h5>
+                    <h5 class="card-title font-weight-bold" style="font-size:1.1rem; overflow: hidden; height: 2.3em;"><%= popular_article.title %></h5>
                   </div>
                   <div class="card-footer bg-transparent border-0">
                     <div class="d-flex align-items-center">
                       <small class="text-muted mr-auto"><%= popular_article.updated_at.strftime("%Y.%m.%d") %></small>
-                      　<%= render partial: "badge", locals: { badge: popular_article }, class: "ml-auto" %>
+                      <%= render partial: "badge", locals: { badge: popular_article }, class: "ml-auto" %>
                     </div>
                   </div>
                 </div>
@@ -116,3 +140,4 @@
     </div>
   </div>
 <% end %>
+
