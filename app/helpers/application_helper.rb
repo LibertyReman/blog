@@ -9,7 +9,7 @@ module ApplicationHelper
 
     #content_tagは任意のHTMLを作るためのヘルパーメソッド :liタグを作成しクラスには先ほど作ったクラス名を
     #指定している
-    #liタグの中にlink_toのaタグが埋め込まれる　ヘルパーの呼び出し元に返される
+    #liタグの中にlink_toのaタグが埋め込まれる ヘルパーの呼び出し元に返される
     content_tag :li, class: class_name do
       link_to name, path, class: 'nav-link'
     end

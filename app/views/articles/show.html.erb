@@ -5,17 +5,22 @@
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
-<div class="mx-auto col-lg-11  col-12 py-2 border-bottom">
+<div class="mx-auto col-lg-11 py-2 border-bottom">
   <div class="row">
     <div class="col-lg-9 mt-2">
       <div class="d-flex align-items-center mb-1">
-        <p class="my-1 text-muted"><%= @article.updated_at.strftime("%Y.%m.%d") %></p>
-        　<%= render partial: "badge", locals: { badge: @article } %>
+        <p class="my-1 text-muted mr-3"><%= @article.updated_at.strftime("%Y.%m.%d") %></p>
+        <%= render partial: "badge", locals: { badge: @article } %>
       </div>
       <h3 class="font-weight-bold mb-3"><%= @article.title %></h3>
-
       <% if @article.image_id.present? %>
-        <%= image_tag attachment_url(@article, :image), class: 'd-block img-fluid rounded border mb-2', style: 'width: 620px; height: 350px; object-fit: cover; '%>
+        <div class="col-lg-8 p-2 ">
+          <div class="img-wrapper">
+            <div class="img-content">
+              <%= image_tag attachment_url(@article, :image), class: 'd-block img-fluid rounded border mb-2', style: 'width: 100%; height: 100%; object-fit: cover; '%>
+            </div>
+          </div>
+        </div>
       <% end %>
       <%= md_to_html(@article.content) %>
     </div>
