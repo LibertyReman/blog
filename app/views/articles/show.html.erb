@@ -14,7 +14,7 @@
       </div>
       <h3 class="font-weight-bold mb-3"><%= @article.title %></h3>
       <% if @article.image_id.present? %>
-        <div class="col-lg-8 p-2 ">
+        <div class="col-lg-8 p-2 mb-3">
           <div class="img-wrapper">
             <div class="img-content">
               <%= image_tag attachment_url(@article, :image), class: 'd-block img-fluid rounded border mb-2', style: 'width: 100%; height: 100%; object-fit: cover; '%>
