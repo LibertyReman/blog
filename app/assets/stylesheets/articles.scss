@@ -38,3 +38,18 @@
     right: 0;
 }
 
+table {
+    border: 1px solid #DDDDDD;
+    th{
+        border: 1px solid #DDDDDD;
+        border-collapse: collapse;
+        background: #EEEEEE;
+    }
+    td{
+        border: 1px solid #DDDDDD;
+        border-collapse: collapse;
+    }
+}
+
+
+
