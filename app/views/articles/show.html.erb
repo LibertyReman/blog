@@ -1,4 +1,4 @@
-<% content_for(:html_title) { @article.title } %>
+<% set_meta_tags title: @article.title, og: { title: @article.title, type: 'article', image: @article.image }, twitter: { title: @article.title, image: @article.image} %>
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>

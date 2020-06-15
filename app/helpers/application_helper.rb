@@ -14,4 +14,35 @@ module ApplicationHelper
       link_to name, path, class: 'nav-link'
     end
   end
+
+  def default_meta_tags
+    {
+      site: "Liber's Blog",
+      reverse: true,
+      charset: 'utf-8',
+      description: 'IT系を中心に少しでも役立ちそうなことを情報発信',
+      keywords: "Liber's Blog,liber,mac,vim,bash,rails,プログラミング,",
+      canonical: request.original_url,
+      separator: '-',
+      icon: [
+        { href: image_url('favicon.ico') },
+        { href: image_url('apple-touch-icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
+      ],
+      og: {
+        site_name: "Liber's Blog",
+        title: "Liber's Blog",
+        description: 'IT系を中心に少しでも役立ちそうなことを情報発信',
+        type: 'website',
+        url: request.original_url,
+        image: image_url('top.jpg'),
+        locale: 'ja_JP'
+      },
+      twitter: {
+        card: 'summary',
+        title: "Liber's Blog",
+        description: 'IT系を中心に少しでも役立ちそうなことを情報発信',
+        image: image_url('top.jpg')
+      }
+    }
+  end
 end
