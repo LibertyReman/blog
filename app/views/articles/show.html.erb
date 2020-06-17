@@ -1,4 +1,5 @@
-<% set_meta_tags title: @article.title, og: { title: @article.title, type: 'article', image: @article.image }, twitter: { title: @article.title, image: @article.image} %>
+<% set_meta_tags title: @article.title, description: strip_tags(md_to_html(@article.content)).truncate(50), og: { title: @article.title, description: strip_tags(md_to_html(@article.content)).truncate(50), type: 'article', image: attachment_url(@article, :image, format: 'jpg' ) }, twitter: { title: @article.title, description: strip_tags(md_to_html(@article.content)).truncate(50), image: attachment_url(@article, :image, format: 'jpg') } %>
+
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
