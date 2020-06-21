@@ -9,6 +9,7 @@ class Article < ApplicationRecord
   validates :content, presence: true
   validates :image, presence: true
   validates :tag_ids, presence: true
+  validates :slug, presence: true
 
   attachment :image
 
@@ -19,5 +20,10 @@ class Article < ApplicationRecord
     else
       Article.none
     end
+  end
+
+  #記事URL変更用
+  def to_param
+    slug
   end
 end
