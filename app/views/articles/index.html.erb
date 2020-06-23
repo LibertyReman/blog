@@ -33,7 +33,7 @@
                   </div>
                   <div class="card-footer bg-transparent border-0">
                     <div class="d-flex align-items-center">
-                      <small class="text-muted mr-auto"><%= search_article.updated_at.strftime("%Y.%m.%d") %></small>
+                      <small class="text-muted mr-auto"><%= search_article.created_at.strftime("%Y.%m.%d") %></small>
                       <%= render partial: "badge", locals: { badge: search_article }, class: "ml-auto" %>
                     </div>
                   </div>
@@ -82,7 +82,7 @@
                   </div>
                   <div class="card-footer bg-transparent border-0">
                     <div class="d-flex align-items-center">
-                      <small class="text-muted mr-auto"><%= latest_article.updated_at.strftime("%Y.%m.%d") %></small>
+                      <small class="text-muted mr-auto"><%= latest_article.created_at.strftime("%Y.%m.%d") %></small>
                       <%= render partial: "badge", locals: { badge: latest_article }, class: "ml-auto"  %>
                     </div>
                   </div>
@@ -127,7 +127,7 @@
                   </div>
                   <div class="card-footer bg-transparent border-0">
                     <div class="d-flex align-items-center">
-                      <small class="text-muted mr-auto"><%= popular_article.updated_at.strftime("%Y.%m.%d") %></small>
+                      <small class="text-muted mr-auto"><%= popular_article.created_at.strftime("%Y.%m.%d") %></small>
                       <%= render partial: "badge", locals: { badge: popular_article }, class: "ml-auto" %>
                     </div>
                   </div>
