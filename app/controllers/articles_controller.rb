@@ -16,8 +16,7 @@ class ArticlesController < ApplicationController
     # 記事検索結果が無い場合、アラートを出す
     if @search_word.present?
       if @search_articles.present?
-        # 記事があった場合はアラートを消す
-        flash[:alert] = ""
+        # 記事があった場合は何もしない
       else
         flash.now[:alert] = "Noting found: #{@search_word}"
       end
