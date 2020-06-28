@@ -38,7 +38,7 @@ module ApplicationHelper
         locale: 'ja_JP'
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         title: "Liber's Blog",
         description: 'IT系を中心に少しでも役立ちそうなことを情報発信',
         image: image_url('top.jpg')
